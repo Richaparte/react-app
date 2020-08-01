@@ -169,7 +169,7 @@ const minLength= (len) => (val) => (val) && (val.length>=len);
                 </div>
             );
         }
-        else if(poprs.errMess){
+        else if(props.errMess){
             return (
                 <div className="container">
                     <div className="row">
