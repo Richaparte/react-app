@@ -4,7 +4,7 @@ import React, {Component} from 'react';
 import { Card, CardImg, CardBody, CardText, CardTitle, Breadcrumb, BreadcrumbItem, Button, Modal, ModalBody,ModalHeader, Row,Col,Label} from 'reactstrap';
 import {Link } from 'react-router-dom';
 import { LocalForm, Control, Errors } from 'react-redux-form';
-
+import {Loading} from './LoadingComponent';
 
 const required=(val) =>val && val.length;
 const maxLength= (len)=>(val) => !(val) || (val.length<=len);
@@ -160,6 +160,24 @@ const minLength= (len) => (val) => (val) && (val.length>=len);
 
     
     const Dishdetail=(props) => {
+        if (props.isLoading){
+            return (
+                <div className="container">
+                    <div className="row">
+                        <Loading/>
+                    </div>
+                </div>
+            );
+        }
+        else if(poprs.errMess){
+            return (
+                <div className="container">
+                    <div className="row">
+                        <h2>{props.errMess}</h2>
+                    </div>
+                </div>
+            );
+        }
         const dish = props.dish
         if (dish == null) {
             return (<div></div>)
